@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🩺 DrApolloClone — Frontend (Next.js)
 
-## Getting Started
+This is the **frontend** of the DrApolloClone project, built entirely using **Next.js App Router**. The application fetches doctor data via backend APIs and displays it with SEO optimization, filter functionality, and pagination.
 
-First, run the development server:
+---
+
+## ✨ Features
+
+### 🔎 Filter & Paginate Doctors
+- Doctors can be filtered based on:
+  - **Experience (Minimum)**
+  - **Rating (Minimum)**
+- Pagination is implemented with:
+  - Dynamic query params (e.g., `?page=2&experienceMin=3`)
+  - Limit set to 5 per page
+- Filter logic is handled in the backend but controlled from the frontend UI (`FilterClient.js`)
+
+### ➕ Add Doctor Functionality
+- A modal/dialog form allows users to add a new doctor.
+- Fields include:
+  - Name, Gender, Location, Image URL, Specialization, Experience, Rating
+- Calls the backend API `POST /api/doctor/addDoctor` on form submission
+
+### 🌐 SEO Optimized
+- Dynamic SEO implemented using `export const metadata` in `page.js` (Next.js App Router)
+- Helps improve search engine visibility
+
+---
+
+## 📁 Project Structure
 
 ```bash
+/frontend
+│
+├── app/
+│   └── doctor/
+│       ├── page.js           # Main doctor listing page with filters and pagination
+│       ├── FilterClient.js   # Client-side component for filters and Add Doctor modal
+│
+├── components/
+│   ├── DoctorList.js         # Displays the list of doctors
+│   ├── Pagination.js         # Pagination component
+│
+└── lib/
+    └── api.js                # Handles API calls to backend
+cd frontend
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
